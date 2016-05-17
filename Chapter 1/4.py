@@ -1,3 +1,5 @@
+#Write a method to decide if two strings are anagrams or not.
+
 def dictionagram(s1, s2):
 	#first compare lengths to cover bases.
 	if len(s1) != len(s2):
