@@ -27,6 +27,12 @@ def dictionagram(s1, s2):
 	# "s1 and s2 are anagrams."
 	return True
 
+#run time is O(n) where n is the number of characters in s1 & s2 (assuming they are the same length; if not, then run time = o(lesser of two lengths).
+#O(n) to add characters of s1 to d
+#O(n) to compare characters of s2 to d
+#O(c) where c is some constant < n (c = # of unique characters in s1), to check all keys have value 0 in d.
+#O(n) + O(n) + O(c) = O(n)
+
 
 def testcases1():
 	n = 0
