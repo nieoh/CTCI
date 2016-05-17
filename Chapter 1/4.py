@@ -34,47 +34,58 @@ def dictionagram(s1, s2):
 #O(n) + O(n) + O(c) = O(n)
 
 
-def testcases1():
+def testcases1(f):
 	n = 0
 	#empty strings
-	if not dictionagram("",""):
+	if not f("",""):
 		n += 1
 		print "Failed empty strings"
 	#single string + empty string
-	if dictionagram("", "a"):
+	if f("", "a"):
 		n += 1
 		print "Failed single string vs empty string"
 	#are anagrams
-	if not dictionagram("abc def", "f edcab"):
+	if not f("abc def", "f edcab"):
 		n += 1
 		print "Failed standard anagram test"
 	#not anagrams but have all the same characters, just different #s of them
-	if dictionagram("abcddab", "abccdab"):
+	if f("abcddab", "abccdab"):
 		n += 1
 		print "Failed nonagram, same char, different values"
 	#not anagrams have different characters
-	if dictionagram("abc ", "xyze"):
+	if f("abc ", "xyze"):
 		n += 1
 		print "Failed nonagram basic"
 	#not anagrams s2 has a subset of s1 characters
-	if dictionagram("abcdd ", "abcddd"):
+	if f("abcdd ", "abcddd"):
 		n += 1
 		print "Failed nonagram, char(s2) \subset char (s1)"
 	#not anagrams different lengths
-	if dictionagram("abcd", "dcb"):
+	if f("abcd", "dcb"):
 		n += 1
 		print "Failed nonagram, len(s1) != len(s2)"
 	#not anagrams s1 has a subset of s2 characters
-	if dictionagram("abc eff", "f edcab"):
+	if f("abc eff", "f edcab"):
 		n += 1
 		print "Failed nonagram, char(s1) \subset char(s2)"
 	if n > 0:
 		print "Number of tests failed: %d" %n
-		return Failed
-	return "Passed"
+		return "Failed"
+	return "Passed all test cases for function:", f
 
-print testcases1()
+print testcases1(dictionagram)
 
+
+def sortagram(s1, s2):
+	if len(s1) != len(s2):
+		return False
+	return sorted(s1) == sorted(s2)
+
+print testcases1(sortagram)
+
+#note difference between x.sort() and sorted(x)
+#run time is O(nlogn) where n is the # characters in s1 (same as s2).
+#it takes nlogn to sort each s1 and s2 and n to compare the two, so O(nlogn) + O(nlogn) + O(n) = O(nlogn)
 
 
 
